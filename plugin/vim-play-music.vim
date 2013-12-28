@@ -9,6 +9,7 @@ import vim
 
 VLC_APP = "/Applications/VLC.app/Contents/MacOS/VLC"
 TO_WATCH_URL = "http://www.youtube.com"
+DEVNULL = open(os.devnull, 'wb')
 
 # close any existing instances of VLC
 p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
@@ -29,7 +30,6 @@ while website_html[idx] != "\"":
     TO_WATCH_URL += website_html[idx]
     idx += 1
 args = [VLC_APP, TO_WATCH_URL]
-DEVNULL = open(os.devnull, 'wb')
 p = subprocess.Popen(args, stdout=DEVNULL, stderr=DEVNULL)
 EOF
 endfunction
